@@ -35,21 +35,29 @@
                 {% if cases %}
                     {% for case in cases %}
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ case.case_name }}</th>
-                        <td class="px-6 py-4">{{ case.case_created }}</td>
-                        <td class="px-6 py-4">{{ case.case_description }}</td>
-                        <td class="px-6 py-4">{{ case.case_status }}</td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <a href="{% url 'case_view' case.case_id %}">{{ case.case_name }}</a>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="{% url 'case_view' case.case_id %}">{{ case.case_created }}</a>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="{% url 'case_view' case.case_id %}">{{ case.case_description }}</a>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="{% url 'case_view' case.case_id %}">{{ case.case_status }}</a>
+                        </td>
                     </tr>
                     {% endfor %}
                 {% else %}
                     <tr>
-                        <td colspan="7" class="px-6 py-4 text-center">No cases found.</td>
+                        <td colspan="4" class="px-6 py-4 text-center">No cases found.</td>
                     </tr>
                 {% endif %}
             </tbody>
         </table>
     </div>
-</div>
+    
 
     
 

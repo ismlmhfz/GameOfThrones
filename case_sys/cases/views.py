@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Case
 from django.db.models import Q
 from django.core.paginator import Paginator
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 def home(request):
@@ -25,5 +26,6 @@ def home(request):
     return render(request, 'home.html', {'cases': cases, 'query': query})
 
 #view case function
-def case_view(request):
-    return render(request, 'case_view.html')
+def case_view(request, case_id):
+    case = get_object_or_404(Case, pk=case_id)
+    return render(request, 'case_view.html', {'case': case})
