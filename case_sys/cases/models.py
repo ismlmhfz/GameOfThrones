@@ -1,10 +1,10 @@
 from django.db import models
-
+from ckeditor.fields import RichTextField
 # Create your models here.
 
 class Case(models.Model):
     case_id = models.AutoField(primary_key=True)
-    case_name = models.CharField(max_length=100)
+    case_name = RichTextField(max_length=50)
     case_description = models.TextField()
     case_status = models.CharField(max_length=50)
     case_priority = models.CharField(max_length=50)
@@ -20,7 +20,7 @@ class Courts(models.Model):
     court_id = models.AutoField(primary_key=True)
     court_name = models.CharField(max_length=100)
     court_location = models.CharField(max_length=100)
-    court_created = models.DateTimeField(auto_now_add=True)
+    court_created = models.DateField(auto_now_add=True)
     court_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
